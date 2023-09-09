@@ -1,0 +1,13 @@
+id,name,price,image_name,category,brand,tag
+1,Product 1,119.99,product1.jpg,nike,acne,featured
+2,Product 2,219.99,product2.jpg,puma,grune erde,featured
+3,Product 3,39.99,product3.jpg,adidas,albiro,featured
+4,Product 4,214.99,product4.jpg,under armour,ronhill,featured
+5,Product 5,114.99,product5.jpg,puma,oddmolly,featured
+6,Product 6,419.99,product6.jpg,adidas,boudestijn,featured
+7,Product 7,341.99,recommend1.jpg,asics,rosch creative culture,recommended
+8,Product 8 Easy Polo Black Edition,144.99,recommend2.jpg,nike,ronhill,recommended
+9,Product 9,514.99,recommend3.jpg,puma,oddmolly,recommended
+10,Product 10 Easy Polo Black Edition,391.99,recommend1.jpg,adidas,boudestijn,recommended
+11,Product 11,191.99,recommend2.jpg,adidas,rosch creative culture,recommended
+12,Product 12 Easy Polo Black Edition,529.99,recommend3.jpg,puma,acne,recommended
