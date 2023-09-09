@@ -762,11 +762,18 @@ h2.title:before{
 }
 
 .brands-name {
+  cursor: pointer;
   border: 1px solid #F7F7F0;
   padding-bottom: 20px;
   padding-top: 15px;
 }
 
+.selectedCatsBrands{
+  border: 1px solid #F7F7F0;
+    padding: 0px 5px 0px 5px;
+    background-color: lightblue;
+    margin-left: 5px;
+}
 
 .brands-name .nav-stacked li a {
   background-color: #FFFFFF;

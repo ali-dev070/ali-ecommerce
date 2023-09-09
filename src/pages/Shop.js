@@ -12,6 +12,7 @@ export default function Shop(){
 	const [shopData, setShopData] = useState([]);
 	const [priceRange, setPriceRange] = useState([0, 600]);
 	const [prodCategory, setProdCategory] = useState([]);
+	const [prodBrands, setProdBrands] = useState([]);
 
 	let featuredProducts = shopData.filter( prod => prod.tag == 'featured');
 	let recommendedProducts = shopData.filter( prod => prod.tag == 'recommended');
@@ -23,6 +24,10 @@ export default function Shop(){
 
 			if(prodCategory.length > 0){
 				setShopData(data.filter(pc => prodCategory.some(c => c === pc.category) ));
+			}
+
+			if(prodBrands.length > 0){
+				setShopData(data.filter(pc => prodBrands.some(c => c === pc.brand) ));
 			}
 /*
 			const data = await csv(process.env.PUBLIC_URL + './all_events.csv');
@@ -41,7 +46,7 @@ export default function Shop(){
 		fetchProducts()
 		.catch(console.error);
 
-	},[priceRange, prodCategory]);
+	},[priceRange, prodCategory, prodBrands]);
 
 	const addToCategories = (e, cat) => {
 		e.preventDefault();
@@ -51,6 +56,16 @@ export default function Shop(){
 			setProdCategory([...prodCategory, cat]);
 		}
 	};
+
+	const addToBrands = (e, brand) => {
+		e.preventDefault();
+		if(brand === ""){
+			setProdBrands([]);
+		} else {
+			setProdBrands([...prodBrands, brand]);
+		}
+	};
+
     return(
         <section>
 		<div className="container">
@@ -60,7 +75,7 @@ export default function Shop(){
 						<h2>Category</h2>
 						<div className="panel-group category-products" id="accordian">
 							<div className="panel panel-default disp-cats">
-								<h5>{console.log("cats: "+prodCategory)}</h5>
+								{prodCategory.map(p=> <span className="selectedCatsBrands"> {p} </span>)}
 							</div>
 							<div className="panel panel-default">
 								<div className="panel-heading">
@@ -175,15 +190,16 @@ export default function Shop(){
 					
 						<div className="brands_products">
 							<h2>Brands</h2>
-							<div className="brands-name">
+							<div className="brands-name ">
 								<ul className="nav nav-pills nav-stacked">
-									<li><a href="#"> <span className="pull-right">(50)</span>Acne</a></li>
-									<li><a href="#"> <span className="pull-right">(56)</span>Grüne Erde</a></li>
-									<li><a href="#"> <span className="pull-right">(27)</span>Albiro</a></li>
-									<li><a href="#"> <span className="pull-right">(32)</span>Ronhill</a></li>
-									<li><a href="#"> <span className="pull-right">(5)</span>Oddmolly</a></li>
-									<li><a href="#"> <span className="pull-right">(9)</span>Boudestijn</a></li>
-									<li><a href="#"> <span className="pull-right">(4)</span>Rösch creative culture</a></li>
+									<li><a onClick={e => addToBrands(e, "acne")}> <span className="pull-right">(50)</span>Acne</a></li>
+									<li><a onClick={e => addToBrands(e, "grune erde")}> <span className="pull-right">(56)</span>Grüne Erde</a></li>
+									<li><a onClick={e => addToBrands(e, "albiro")}> <span className="pull-right">(27)</span>Albiro</a></li>
+									<li><a onClick={e => addToBrands(e, "ronhill")}> <span className="pull-right">(32)</span>Ronhill</a></li>
+									<li><a onClick={e => addToBrands(e, "oddmolly")}> <span className="pull-right">(5)</span>Oddmolly</a></li>
+									<li><a onClick={e => addToBrands(e, "boudestijn")}> <span className="pull-right">(9)</span>Boudestijn</a></li>
+									<li><a onClick={e => addToBrands(e, "rosch creative culture")}> <span className="pull-right">(4)</span>Rösch creative culture</a></li>
+									<li><a onClick={e => addToBrands(e, "")} style={{color:'red', cursor:'pointer'}}> <span className="pull-right"></span>Clear All</a></li>
 								</ul>
 							</div>
 						</div>
