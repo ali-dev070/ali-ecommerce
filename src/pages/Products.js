@@ -1,22 +1,18 @@
 import {React, useState, useEffect} from "react";
 import {csv} from 'd3';
 import RangeSlider from "react-range-slider-input";
-import 'react-range-slider-input/dist/style.css';
 
-import Slider from "../components/Slider";
+import PromotionBanner from "../components/PromotionBanner";
 import SectionFeatured from "../components/SectionFeatured";
-import SectionCategory from "../components/SectionCategory";
-import SectionRecommended from "../components/SectionRecommended";
 
-export default function Shop(){
+export default function Products(){
 
-	const [shopData, setShopData] = useState([]);
+    const [shopData, setShopData] = useState([]);
 	const [priceRange, setPriceRange] = useState([0, 600]);
 	const [prodCategory, setProdCategory] = useState([]);
 	const [prodBrands, setProdBrands] = useState([]);
 
-	let featuredProducts = shopData.filter( prod => prod.tag == 'featured');
-	let recommendedProducts = shopData.filter( prod => prod.tag == 'recommended');
+	let featuredProducts = shopData;//.filter( prod => prod.tag == 'featured');
 
 	useEffect(() => {
 		const fetchProducts = async () => {
@@ -30,18 +26,6 @@ export default function Shop(){
 			if(prodBrands.length > 0){
 				setShopData(data.filter(pc => prodBrands.some(c => c === pc.brand) ));
 			}
-/*
-			const data = await csv(process.env.PUBLIC_URL + './all_events.csv');
-			setShopData(
-			  data.map((d) => ({
-				x: new Date(d.date),
-				y: 0,
-				category: d.category,
-				title: d.title,
-			  }))
-			);
-			events.pop();
-*/
 		};
 
 		fetchProducts()
@@ -68,8 +52,8 @@ export default function Shop(){
 	};
 
     return(
-		<>
-		<Slider />
+        <>
+        <PromotionBanner />
         <section>
 		<div className="container">
 			<div className="row">
@@ -226,14 +210,10 @@ export default function Shop(){
 
 					<SectionFeatured data={featuredProducts} />
 					
-					<SectionCategory />
-					
-					<SectionRecommended data={recommendedProducts} />
-					
 				</div>
 			</div>
 		</div>
 	</section>
-	</>
+        </>
     );
 }
