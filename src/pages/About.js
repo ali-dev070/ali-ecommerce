@@ -6,6 +6,7 @@ export default function Shop(){
 		<div className="container">
 <h1>About page is under construction.</h1>
 <h2>comming soon!</h2>
+<h3>testing</h3>
         </div>
         </section>
     );
